@@ -1,7 +1,17 @@
 {
+  "language": "jv",
+  "dialect": "Javanese Ngoko",
+  "title": "Wis Tak Lilakke",
   "lines": [
-    {"start": 1.0, "end": 5.0, "text": "Tulis baris lirik pertama"},
-    {"start": 5.0, "end": 9.0, "text": "Baris kedua"},
-    {"start": 9.0, "end": 13.0, "text": "Baris ketiga"}
+    {"start": 0.40, "end": 4.35, "text": "Wis tak lilakke"},
+    {"start": 4.95, "end": 8.55, "text": "Lungamu"},
+    {"start": 8.95, "end": 11.20, "text": "Ora butuh wong sing seneng"},
+    {"start": 11.45, "end": 14.30, "text": "Dolanan ati"},
+    {"start": 15.15, "end": 16.35, "text": "Pokoke los"},
+    {"start": 16.55, "end": 18.20, "text": "Aku ra peduli"},
+    {"start": 19.25, "end": 22.15, "text": "Los aku ora wedi"},
+    {"start": 22.30, "end": 23.35, "text": "Kelangan"},
+    {"start": 23.45, "end": 27.55, "text": "Wong sing senenge ngapusi"},
+    {"start": 28.85, "end": 29.75, "text": "Minggat"}
   ]
 }

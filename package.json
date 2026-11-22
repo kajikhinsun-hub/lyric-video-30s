@@ -1,20 +1,23 @@
 {
   "name": "lyric-video-30s",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "Automated Javanese Lyric Typography Music Video (1080x1920 @ 30fps, Remotion)",
   "private": true,
   "scripts": {
     "start": "remotion studio",
     "lyrics": "node scripts/make-lyrics.mjs",
-    "build": "remotion render LyricVideo out/video.mp4 --codec=h264"
+    "typecheck": "tsc --noEmit",
+    "build": "remotion render LyricVideo out/video.mp4 --codec=h264 --pixel-format=yuv420p --audio-codec=aac --concurrency=2"
   },
   "dependencies": {
-    "@remotion/cli": "^4.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "remotion": "^4.0.0"
+    "@remotion/cli": "4.0.242",
+    "@remotion/google-fonts": "4.0.242",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.242"
   },
   "devDependencies": {
-    "@types/react": "^18.3.0",
-    "typescript": "^5.4.0"
+    "@types/react": "18.3.3",
+    "typescript": "5.5.4"
   }
 }

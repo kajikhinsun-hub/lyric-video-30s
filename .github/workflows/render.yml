@@ -7,7 +7,7 @@ on:
 
 jobs:
   render:
-    name: Typecheck & Render LyricVideo MP4 (1080x1920)
+    name: Whisper QA, Typecheck, Previews & Render Final Javanese Lyric Video
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -20,28 +20,42 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install system libs for Chrome & FFmpeg
+      - name: Install system libs for Chrome, FFmpeg & Python QA
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg \
+          sudo apt-get install -y ffmpeg python3-pip \
             libnss3 libdbus-1-3 libatk1.0-0t64 libgbm-dev libasound2t64 \
             libxrandr2 libxkbcommon-dev libxfixes3 libxcomposite1 libxdamage1 \
             libatk-bridge2.0-0t64 libpango-1.0-0 libcairo2 libcups2t64 || \
-          sudo apt-get install -y ffmpeg \
+          sudo apt-get install -y ffmpeg python3-pip \
             libnss3 libdbus-1-3 libatk1.0-0 libgbm-dev libasound2 \
             libxrandr2 libxkbcommon-dev libxfixes3 libxcomposite1 libxdamage1 \
             libatk-bridge2.0-0 libpango-1.0-0 libcairo2 libcups2
 
-      - name: Install dependencies
+      - name: Install NPM dependencies
         run: npm install
 
       - name: Typecheck TypeScript
         run: npx tsc --noEmit
 
+      - name: Run Cloud Whisper Javanese Timing QA (GitHub CPU)
+        run: |
+          pip install --break-system-packages faster-whisper || pip install faster-whisper
+          python3 scripts/verify-whisper.py
+
       - name: Ensure Remotion browser
         run: npx remotion browser ensure
 
-      - name: Render LyricVideo MP4 (raw)
+      - name: Render 4 QA Preview Stills (Verse, Pre-Chorus, Chorus, Bridge)
+        run: |
+          mkdir -p out/previews
+          npx remotion still LyricVideo out/previews/01-verse.jpg --frame=65 --image-format=jpeg --jpeg-quality=82
+          npx remotion still LyricVideo out/previews/02-prechorus.jpg --frame=305 --image-format=jpeg --jpeg-quality=82
+          npx remotion still LyricVideo out/previews/03-chorus.jpg --frame=475 --image-format=jpeg --jpeg-quality=82
+          npx remotion still LyricVideo out/previews/04-bridge.jpg --frame=745 --image-format=jpeg --jpeg-quality=82
+          ls -lh out/previews/
+
+      - name: Render Final Javanese Lyric Video (1080x1920 @ 30fps)
         run: |
           npx remotion render LyricVideo out/raw-video.mp4 \
             --codec=h264 \
@@ -49,7 +63,7 @@ jobs:
             --audio-codec=aac \
             --concurrency=2
 
-      - name: Optimize MP4 for mobile & verify streams
+      - name: Optimize MP4 for Universal Mobile Playback & Verify Streams
         run: |
           ffmpeg -y -i out/raw-video.mp4 \
             -c:v libx264 -profile:v high -level:v 4.1 -pix_fmt yuv420p \
@@ -57,14 +71,23 @@ jobs:
             -r 30 -vsync cfr \
             -c:a aac -b:a 192k -ar 44100 \
             -movflags +faststart \
-            out/video.mp4
+            out/final-javanese-lyric-video.mp4
           rm -f out/raw-video.mp4
-          ls -lh out/video.mp4
-          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,r_frame_rate,duration -of default=noprint_wrappers=1 out/video.mp4
+          ls -lh out/final-javanese-lyric-video.mp4
+          ffprobe -v error -show_entries format=duration:stream=codec_type,codec_name,width,height,r_frame_rate -of default=noprint_wrappers=1 out/final-javanese-lyric-video.mp4
 
-      - name: Upload rendered MP4 artifact
+      - name: Upload QA Previews & Whisper Report Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: video
-          path: out/video.mp4
+          name: qa-previews
+          path: |
+            out/previews/*.jpg
+            out/whisper-verification.json
+          retention-days: 14
+
+      - name: Upload Final Javanese Lyric Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-javanese-lyric-video
+          path: out/final-javanese-lyric-video.mp4
           retention-days: 14

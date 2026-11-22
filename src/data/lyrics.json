@@ -1,0 +1,145 @@
+{
+  "language": "jv",
+  "dialect": "Javanese Ngoko",
+  "title": "Wis Tak Lilakke",
+  "durationSec": 30.016,
+  "bpm": 133.5,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.40,
+      "end": 4.35,
+      "text": "Wis tak lilakke",
+      "section": "verse",
+      "animation": "blur-sharp",
+      "emphasis": ["lilakke"],
+      "words": [
+        {"word": "Wis", "start": 0.40, "end": 0.90},
+        {"word": "tak", "start": 0.90, "end": 1.40},
+        {"word": "lilakke", "start": 1.40, "end": 4.35}
+      ]
+    },
+    {
+      "id": 2,
+      "start": 4.95,
+      "end": 8.55,
+      "text": "Lungamu",
+      "section": "verse",
+      "animation": "letter-reveal",
+      "emphasis": ["Lungamu"],
+      "words": [
+        {"word": "Lungamu", "start": 4.95, "end": 8.55}
+      ]
+    },
+    {
+      "id": 3,
+      "start": 8.95,
+      "end": 11.20,
+      "text": "Ora butuh wong sing seneng",
+      "section": "verse",
+      "animation": "word-reveal",
+      "emphasis": ["seneng"],
+      "words": [
+        {"word": "Ora", "start": 8.95, "end": 9.35},
+        {"word": "butuh", "start": 9.35, "end": 9.85},
+        {"word": "wong", "start": 9.85, "end": 10.20},
+        {"word": "sing", "start": 10.20, "end": 10.55},
+        {"word": "seneng", "start": 10.55, "end": 11.20}
+      ]
+    },
+    {
+      "id": 4,
+      "start": 11.45,
+      "end": 14.30,
+      "text": "Dolanan ati",
+      "section": "verse",
+      "animation": "horizontal-slide",
+      "emphasis": ["ati"],
+      "words": [
+        {"word": "Dolanan", "start": 11.45, "end": 12.35},
+        {"word": "ati", "start": 12.35, "end": 14.30}
+      ]
+    },
+    {
+      "id": 5,
+      "start": 15.15,
+      "end": 16.35,
+      "text": "Pokoke los",
+      "section": "chorus",
+      "animation": "chorus-dynamic",
+      "emphasis": ["los"],
+      "words": [
+        {"word": "Pokoke", "start": 15.15, "end": 15.70},
+        {"word": "los", "start": 15.70, "end": 16.35}
+      ]
+    },
+    {
+      "id": 6,
+      "start": 16.55,
+      "end": 18.20,
+      "text": "Aku ra peduli",
+      "section": "chorus",
+      "animation": "scale-up",
+      "emphasis": ["peduli"],
+      "words": [
+        {"word": "Aku", "start": 16.55, "end": 16.95},
+        {"word": "ra", "start": 16.95, "end": 17.30},
+        {"word": "peduli", "start": 17.30, "end": 18.20}
+      ]
+    },
+    {
+      "id": 7,
+      "start": 19.25,
+      "end": 22.15,
+      "text": "Los aku ora wedi",
+      "section": "chorus",
+      "animation": "chorus-dynamic",
+      "emphasis": ["Los", "wedi"],
+      "words": [
+        {"word": "Los", "start": 19.25, "end": 19.90},
+        {"word": "aku", "start": 19.90, "end": 20.45},
+        {"word": "ora", "start": 20.45, "end": 21.05},
+        {"word": "wedi", "start": 21.05, "end": 22.15}
+      ]
+    },
+    {
+      "id": 8,
+      "start": 22.30,
+      "end": 23.35,
+      "text": "Kelangan",
+      "section": "bridge",
+      "animation": "blur-sharp",
+      "emphasis": ["Kelangan"],
+      "words": [
+        {"word": "Kelangan", "start": 22.30, "end": 23.35}
+      ]
+    },
+    {
+      "id": 9,
+      "start": 23.45,
+      "end": 27.55,
+      "text": "Wong sing senenge ngapusi",
+      "section": "bridge",
+      "animation": "word-reveal",
+      "emphasis": ["ngapusi"],
+      "words": [
+        {"word": "Wong", "start": 23.45, "end": 23.85},
+        {"word": "sing", "start": 23.85, "end": 24.20},
+        {"word": "senenge", "start": 24.20, "end": 24.85},
+        {"word": "ngapusi", "start": 24.85, "end": 27.55}
+      ]
+    },
+    {
+      "id": 10,
+      "start": 28.85,
+      "end": 29.75,
+      "text": "Minggat",
+      "section": "outro",
+      "animation": "opacity-fade",
+      "emphasis": ["Minggat"],
+      "words": [
+        {"word": "Minggat", "start": 28.85, "end": 29.75}
+      ]
+    }
+  ]
+}
